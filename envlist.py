@@ -43,6 +43,12 @@ with lock:
         # create a list (named clist) of nevns environments with the 
         # prefix envprefix
         # add code here
+        clist = []
+        number_count = int(nenvs)
+
+        for num in range(number_count):
+            clist.append( '%s%d' % (envprefix, num ) )
+#            print( clist[num])
     else:
         # load hickle file
         clist = hickle.load(file_path)
@@ -50,11 +56,15 @@ with lock:
         if pmode == WRITE_MODE:
             # append item to end of list
             # add code here
+            clist.append(env)
         else:    
             # get and remove env from clist
             # add code here
+            env = clist.pop(0)
             # return env name
             print(env)
+
+#        print ("Test:", clist)
 
     # save hickle file
     hickle.dump(clist, file_path, mode="w")
