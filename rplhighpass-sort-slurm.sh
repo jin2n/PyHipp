@@ -14,6 +14,13 @@
 
 # LOAD MODULES, INSERT CODE, AND RUN YOUR PROGRAMS HERE
 
+# Added for Lab 8 Step 15
+/data/miniconda3/bin/conda init
+source ~/.bashrc
+envarg=`/data/src/PyHipp/envlist.py`
+conda activate $envarg
+
+
 python -u -c "import PyHipp as pyh; \
 import time; \
 pyh.RPLLFP(saveLevel=1); \
@@ -28,4 +35,9 @@ from PyHipp import export_mountain_cells; \
 export_mountain_cells.export_mountain_cells(); \
 print(time.localtime());"
 
+
+
+# Added for Lab 8 Step 15
+conda deactivate 
+/data/src/PyHipp/envlist.py $envarg
 
